@@ -38,14 +38,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label layoutX="125.0" layoutY="18.0" text="Label" fx:id="x0" />
-      <Label layoutX="228.0" layoutY="18.0" text="Label" fx:id="x1" />
-      <Label layoutX="339.0" layoutY="18.0" text="Label" fx:id="x2" />
-      <Label layoutX="445.0" layoutY="18.0" text="Label" fx:id="x3" />
-      <Label layoutX="564.0" layoutY="18.0" text="Label" fx:id="x4" />
-      <Label layoutX="661.0" layoutY="18.0" text="Label" fx:id="x5" />
-      <Label layoutX="767.0" layoutY="18.0" text="Label" fx:id="x6" />
-      <Label layoutX="873.0" layoutY="18.0" text="Label" fx:id="x7" />
-      <Label layoutX="974.0" layoutY="18.0" text="Label" fx:id="x8" />
+      <Label fx:id="deathcounter" layoutX="1112.0" layoutY="380.0" text="Label" />
+      <Button layoutX="1100.0" layoutY="39.0" mnemonicParsing="false" onAction="#moveElement" text="Timer" />
    </children>
 </AnchorPane>
