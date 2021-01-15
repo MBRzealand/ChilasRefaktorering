@@ -20,15 +20,19 @@ public class Controller {
     ImageView imageView = new ImageView();
     @FXML
     ImageView imageViewred = new ImageView();
-    ImageView imageView0 = new ImageView();
-    ImageView imageView1= new ImageView();
+    Image lazer = new Image("Lazer.png");
+    //ImageView imageView0,imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8 = new ImageView(lazer);
+    //ImageView       imageView10,imageView11,imageView12,imageView13,imageView14,imageView15,imageView16,imageView17,imageView18 = new ImageView();
+    ImageView[] imageview1to8 = new ImageView[8];
+
+ /*   ImageView imageView1= new ImageView();
     ImageView imageView2= new ImageView();
     ImageView imageView3= new ImageView();
     ImageView imageView4= new ImageView();
     ImageView imageView5= new ImageView();
     ImageView imageView6= new ImageView();
     ImageView imageView7= new ImageView();
-    ImageView imageView8= new ImageView();
+    ImageView imageView8= new ImageView();*/
     ImageView imageView10 = new ImageView();
     ImageView imageView11= new ImageView();
     ImageView imageView12= new ImageView();
@@ -69,6 +73,7 @@ public class Controller {
     Label left,right,up,down,deathcounter;
     @FXML
     void createbutton(){
+
         Button btn = new Button("ok");
         btn.setOnKeyPressed( event ->{
             switch (event.getCode()){
@@ -97,7 +102,7 @@ public class Controller {
                     up.setOpacity(0.25);
                     down.setOpacity(0.25);
                     left.setOpacity(0.25);
-            //updategrid();
+          updategrid();
                 });
         pane.getChildren().add(btn);
     }
@@ -114,13 +119,20 @@ void updategrid(){
     lazerynext = rngy;
 
     //xxpictures
-    ArrayList<ImageView> redlinearray  = new ArrayList<>();
-    redlinearray.addAll(Arrays.asList(imageView0 ,imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8));
-    for (int i = 0; i < 9; i++) {
-        redlinearray.get(i).setImage( new Image("Lazer.png",100,100,false,false));
+   // ArrayList<ImageView> redlinearray  = new ArrayList<>();
+  //  redlinearray.addAll(Arrays.asList(imageView0 ,imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8));
+    for (int i = 0; i <imageview1to8.length ; i++) {
+        imageview1to8[i] = new ImageView();
+        imageview1to8[i].setImage(new Image("Lazer.png",100,100,false,false));
     }
-    for (int i = 0; i <9 ; i++) {
-        grid.add(redlinearray.get(i),lazerxnow,i);
+
+   //for (int i = 0; i < 9; i++) {
+       // redlinearray.get(i).setImage( new Image("Lazer.png",100,100,false,false));
+       // imageview1to8[i].setImage(new Image("Lazer.png",100,100,false,false));
+   // }
+    for (int i = 0; i <imageview1to8.length ; i++) {
+     //  grid.add(redlinearray.get(i),lazerxnow,i);
+       grid.add(imageview1to8[i],lazerxnow,i);
     }
     //ypictures
 
@@ -254,6 +266,9 @@ void nexttonow(){
     lazerxnow = lazerxnext;
 }
 }
+
+
+
 
 
 
