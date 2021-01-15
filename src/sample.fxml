@@ -39,6 +39,5 @@
         </rowConstraints>
       </GridPane>
       <Label fx:id="deathcounter" layoutX="1112.0" layoutY="380.0" text="Label" />
-      <Button layoutX="1100.0" layoutY="39.0" mnemonicParsing="false" onAction="#moveElement" text="Timer" />
    </children>
 </AnchorPane>
