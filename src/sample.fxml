@@ -39,5 +39,6 @@
         </rowConstraints>
       </GridPane>
       <Label fx:id="deathcounter" layoutX="1112.0" layoutY="380.0" text="Label" />
+      <Button layoutX="1112.0" layoutY="129.0" mnemonicParsing="false"  text="Button" />
    </children>
 </AnchorPane>

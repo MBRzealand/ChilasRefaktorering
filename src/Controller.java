@@ -1,27 +1,12 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import java.util.*;
-
 public class Controller {
-    int x = 2;
-    int y = 2 ;
-    int lazerxnext = 0 ;
-    int lazerxnow  = 0 ;
     int deathcounterint = 0;
-    int lazerynow = 0;
-     int lazerynext = 0;
-    @FXML
-    ImageView imageView = new ImageView();
-    @FXML
-    ImageView[] imageview1to8 = new ImageView[8];
-    ImageView[] imageview10to18 = new ImageView[8];
-    ImageView[] imageview20to28 = new ImageView[8];
-    ImageView[] imageview30to38 = new ImageView[8];
+    Cat cat = new Cat();
+    Lazers lazers = new Lazers();
     @FXML
     GridPane grid;
     @FXML
@@ -35,22 +20,23 @@ public class Controller {
             switch (event.getCode()){
                 case W:
                     up.setOpacity(1);
-                   y--;
+                    cat.minusy();
                     break;
                 case S:
                     down.setOpacity(1);
-                    y++;
+                    cat.plusy();
                     break;
                 case A:
                     left.setOpacity(1);
-                    x--;
+                    cat.minusx();
                     break;
                 case D:
                     right.setOpacity(1);
-                    x++;
+                    cat.plusx();
                     break;
                 }
             checkcoordinates();
+            cat.checkcoordiantes();
         });
         btn.setOnKeyReleased( event ->{
                     right.setOpacity(0.25);
@@ -64,61 +50,34 @@ public class Controller {
 @FXML
 void updategrid(){
     grid.getChildren().clear();
-    imageView.setImage( new Image("Pictures/cat.png"));
-    grid.add(imageView ,x,y);
+    grid.add(cat.getImageView() ,cat.x,cat.y);
     //lazerpick
-    Random random = new Random();
-    int rngx = random.nextInt(9);
-    int rngy = random.nextInt(9);
-    lazerxnext = rngx;
-    lazerynext = rngy;
-
+   lazers.newrandomx();
+   lazers.newrandomy();
     //xxpictures
-    for (int i = 0; i <imageview1to8.length ; i++) {
-        imageview1to8[i] = new ImageView();
-        imageview1to8[i].setImage(new Image("Pictures/Lazer.png",100,100,false,false));
-    }
-    for (int i = 0; i <imageview1to8.length ; i++) {
-       grid.add(imageview1to8[i],lazerxnow,i);
+    for (int i = 0; i <8 ; i++) {
+       grid.add(lazers.getImageview1to8()[i],lazers.getLazerxnow(),i);
     }
     //ypictures
-    for (int i = 0; i < imageview20to28.length; i++) {
-        imageview20to28[i] = new ImageView();
-        imageview20to28[i].setImage(new Image("Pictures/Lazeryværdi.png",100,100,false,false));
-    }
-    for (int i = 0; i <imageview20to28.length ; i++) {
-        if (i != lazerxnow ){
-            grid.add(imageview20to28[i],i,lazerynow);
+    for (int i = 0; i <8 ; i++) {
+        if (i != lazers.getLazerxnow() ){
+            grid.add(lazers.getImageview20to28()[i],i,lazers.getLazerynow());
         }
     }
     //nextxtonow
-    for (int i = 0; i < imageview10to18.length; i++) {
-        imageview10to18[i] = new ImageView();
-        imageview10to18[i].setImage(new Image("Pictures/Lazernext.png",100,100,false,false));
+    for (int i = 0; i <8 ; i++) {
+            grid.add(lazers.getImageview10to18()[i], lazers.getLazerxnext(),i);
     }
-    for (int i = 0; i <imageview10to18.length ; i++) {
-            grid.add(imageview10to18[i],lazerxnext,i);
-    }
-    lazerxnow = lazerxnext;
-    //nextxtonowy
-    for (int i = 0; i < imageview30to38.length; i++) {
-        imageview30to38[i] = new ImageView();
-        imageview30to38[i].setImage(new Image("Pictures/Lazeryværdinext.png",100,100,false,false));
-    }
-    for (int i = 0; i <imageview30to38.length ; i++) {
-        if (i != lazerxnext ){
-            grid.add(imageview30to38[i],i,lazerynext);
+    lazers.lazerxnowtonext();
+    for (int i = 0; i <8 ; i++) {
+        if (i != lazers.getLazerxnext() ){
+            grid.add(lazers.getImageview30to38()[i], i,lazers.getLazerynext());
         }
     }
-    lazerynow = lazerynext;
+    lazers.lazerynowtonext();
 }
 void checkcoordinates(){
-        if (x < 0){ x = 0; }
-        if (y < 0){ y = 0; }
-    if (x > 8){ x = 8; }
-    if (y > 8){ y = 8; }
-    if (x == lazerxnow | y == lazerynow ){
-        System.out.println("you died");
+    if (cat.deadornot(lazers.getLazerxnow(),lazers.getLazerynow())){
         deathcounterint++;
         deathcounter.setText("You have died " + deathcounterint + " times");
     }

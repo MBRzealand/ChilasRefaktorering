@@ -1,0 +1,20 @@
+public class SnakkesagligPerson implements Runnable {
+    private String navn;
+    private int ventetid;
+
+    public SnakkesagligPerson(String n, int t)
+    {
+        navn = n;
+        ventetid = t;
+    }
+    //TODO DELETE LATER
+    public void run()
+    {
+        for (int i=0; i<5; i++)
+        {
+            System.out.println(navn+": bla bla bla "+i);
+            try {  Thread.sleep(ventetid); } catch (Exception e) {} // vent lidt
+        }
+    }
+}
+
