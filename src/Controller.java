@@ -1,11 +1,17 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import java.io.IOException;
 public class Controller  {
     int deathcounterint = 0;
-    int moneyscounter = 0;
+    int scorecounter = 0;
     int plusscore= 0;
     Cat cat = new Cat();
     Lazers lazers = new Lazers();
@@ -89,20 +95,25 @@ void updategrid(){
 void checkdeathandcoins(){
     if (cat.deadornot(lazers.getLazerxnow(),lazers.getLazerynow())){
         deathcounterint++;
-        deathcounter.setText("You have died " + deathcounterint + " times");
-        if(deathcounterint == 3){
+        deathcounter.setText("Times died " + deathcounterint);
+        if(deathcounterint % 3 == 0){
+            scorecounter = 0;
+            scoreboard.setText("Your score is  " + scorecounter);
         }
     }
     if (score.pickedornor(cat.x,cat.y)){
-        moneyscounter= moneyscounter + plusscore;
+        scorecounter = scorecounter + plusscore;
         score.newrandomcoordinates();
-       scoreboard.setText("Your score is  " + moneyscounter);
+       scoreboard.setText("Your score is  " + scorecounter);
     }
 }
 @FXML
-void timer(){
-    SnakkesagligPerson p = new SnakkesagligPerson("Jacob",15000); // opret Jacob
-    Thread t = new Thread(p); // Ny tråd, klar til at udføre p.run()
-    t.start();
-}
+void resetgame(javafx.event.ActionEvent event)throws IOException {
+        //not correct way to reset game, but it works for now
+        Parent blah = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene scene = new Scene(blah);
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+    }
 }

@@ -19,23 +19,16 @@ public class Lazers {
         nextxtonow();
         nextxtonowy();
     }
-
     public int getLazerxnext() {
         return lazerxnext;
     }
-
     public int getLazerxnow() {
         return lazerxnow;
     }
-
-    public int getLazerynow() {
-        return lazerynow;
-    }
-
+    public int getLazerynow() { return lazerynow; }
     public int getLazerynext() {
         return lazerynext;
     }
-
     public ImageView[] getImageview1to8() {
         return imageview1to8;
     }
@@ -64,8 +57,7 @@ public class Lazers {
     for (int i = 0; i <imageview1to8.length ; i++) {
         imageview1to8[i] = new ImageView();
         imageview1to8[i].setImage(new Image("Pictures/Lazer.png",100,100,false,false));
-    }
-    }
+    } }
     void ypictures(){
     for (int i = 0; i < imageview20to28.length; i++) {
         imageview20to28[i] = new ImageView();
@@ -81,5 +73,4 @@ public class Lazers {
     for (int i = 0; i < imageview30to38.length; i++) {
         imageview30to38[i] = new ImageView();
         imageview30to38[i].setImage(new Image("Pictures/Lazeryværdinext.png",100,100,false,false));
-    }}
-    }
+    }}}

@@ -1,7 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 public class Cat {
     int x ;
     int y ;
@@ -15,11 +14,9 @@ public class Cat {
          y = 2;
         imageView.setImage(new Image("Pictures/cat.png"));
     }
-
     void plusx(){
         x++;
     }
-
     void plusy(){
         y++;
     }
@@ -43,6 +40,4 @@ public class Cat {
         if (x > 8){ x = 8; }
         if (y > 8){ y = 8; }
     }
-
-
 }
