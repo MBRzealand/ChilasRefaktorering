@@ -5,12 +5,9 @@ import javafx.scene.image.ImageView;
 public class Cat {
     int x ;
     int y ;
-    Image image;
-
     public ImageView getImageView() {
         return imageView;
     }
-
     @FXML
     ImageView imageView = new ImageView();
     public Cat() {

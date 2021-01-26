@@ -9,10 +9,10 @@ public class Lazers {
     int lazerynext = 0;
     Random random = new Random();
     @FXML
-    ImageView[] imageview1to8 = new ImageView[8];
-    ImageView[] imageview10to18 = new ImageView[8];
-    ImageView[] imageview20to28 = new ImageView[8];
-    ImageView[] imageview30to38 = new ImageView[8];
+    ImageView[] imageview1to8 = new ImageView[9];
+    ImageView[] imageview10to18 = new ImageView[9];
+    ImageView[] imageview20to28 = new ImageView[9];
+    ImageView[] imageview30to38 = new ImageView[9];
     public Lazers() {
         xxpictures();
         ypictures();

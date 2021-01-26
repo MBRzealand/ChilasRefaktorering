@@ -1,8 +1,3 @@
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.util.Random;
-
 public class Threadone implements Runnable {
     private String souttext;
     private int speed;
@@ -13,6 +8,7 @@ public class Threadone implements Runnable {
     }
     public void run()
     {
+        //TODO delete leter
         Controller controller = new Controller();
         for (int i = 0; i <100 ; i++) {
             controller.grid.getChildren().clear();

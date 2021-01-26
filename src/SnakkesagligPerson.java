@@ -10,9 +10,14 @@ public class SnakkesagligPerson implements Runnable {
     //TODO DELETE LATER
     public void run()
     {
-        for (int i=0; i<5; i++)
+        Controller controller = new Controller();
+        for (int i = 0; i < 10000 ; i++) {
+            System.out.println("waiting");
+        }
+        for (int i=0; i<1000; i++)
         {
             System.out.println(navn+": bla bla bla "+i);
+            controller.runmetods();
             try {  Thread.sleep(ventetid); } catch (Exception e) {} // vent lidt
         }
     }
