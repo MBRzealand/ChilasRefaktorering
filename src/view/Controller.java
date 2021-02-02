@@ -1,3 +1,5 @@
+package view;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import logic.Cat;
 import logic.Lazers;
+import logic.Score;
 
 import java.io.IOException;
 public class Controller  {

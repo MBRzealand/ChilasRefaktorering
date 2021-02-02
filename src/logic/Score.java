@@ -1,3 +1,5 @@
+package logic;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.util.Random;
@@ -10,7 +12,7 @@ public class Score {
     public int getPlusscore() { return plusscore+1; }
     public ImageView getImageView() { return imageView; }
     public Score() { newrandomcoordinates(); }
-    void newrandomcoordinates(){
+    public void newrandomcoordinates(){
         x =  random.nextInt(9);
         y =  random.nextInt(9);
         plusscore = random.nextInt(3);
@@ -23,7 +25,7 @@ public class Score {
     public int getY() {
         return y;
     }
-    Boolean pickedornor(int cx, int cy){
+    public Boolean pickedornor(int cx, int cy){
         if (x == cx & y == cy ){
             System.out.println("plus one in score");
             return true;
