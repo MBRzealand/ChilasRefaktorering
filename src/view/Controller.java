@@ -35,6 +35,10 @@ public class Controller  {
     @FXML
     void createbutton(){
         Button btn = new Button("ok");
+        xxpictures();
+        ypictures();
+        nextxtonow();
+        nextxtonowy();
         newimage();
         btn.setOnKeyPressed( event ->{
             switch (event.getCode()){
@@ -79,22 +83,22 @@ void updategrid(){
    lazers.newrandomy();
     //xxpictures
     for (int i = 0; i <9 ; i++) {
-       grid.add(lazers.getImageview1to8()[i],lazers.getLazerxnow(),i);
+       grid.add(getImageview1to8()[i],lazers.getLazerxnow(),i);
     }
     //ypictures
     for (int i = 0; i <9 ; i++) {
         if (i != lazers.getLazerxnow() ){
-            grid.add(lazers.getImageview20to28()[i],i,lazers.getLazerynow());
+            grid.add(getImageview20to28()[i],i,lazers.getLazerynow());
         }
     }
     //nextxtonow
     for (int i = 0; i <9 ; i++) {
-            grid.add(lazers.getImageview10to18()[i], lazers.getLazerxnext(),i);
+            grid.add(getImageview10to18()[i], lazers.getLazerxnext(),i);
     }
     lazers.lazerxnowtonext();
     for (int i = 0; i <9 ; i++) {
         if (i != lazers.getLazerxnext() ){
-            grid.add(lazers.getImageview30to38()[i], i,lazers.getLazerynext());
+            grid.add(getImageview30to38()[i], i,lazers.getLazerynext());
         }
     }
     lazers.lazerynowtonext();
@@ -140,6 +144,56 @@ void resetgame(javafx.event.ActionEvent event)throws IOException {
             case 2:
                 imageView.setImage(new Image("assets/gold.png"));
                 break;
+        }
+    }
+    @FXML
+    ImageView[] imageview1to8 = new ImageView[9];
+    ImageView[] imageview10to18 = new ImageView[9];
+    ImageView[] imageview20to28 = new ImageView[9];
+    ImageView[] imageview30to38 = new ImageView[9];
+
+
+    public ImageView[] getImageview1to8() {
+        return imageview1to8;
+    }
+
+    public ImageView[] getImageview10to18() {
+        return imageview10to18;
+    }
+
+    public ImageView[] getImageview20to28() {
+        return imageview20to28;
+    }
+
+    public ImageView[] getImageview30to38() {
+        return imageview30to38;
+    }
+
+    public void xxpictures() {
+        for (int i = 0; i < imageview1to8.length; i++) {
+            imageview1to8[i] = new ImageView();
+            imageview1to8[i].setImage(new Image("assets/Lazer.png", 100, 100, false, false));
+        }
+    }
+
+    public void ypictures() {
+        for (int i = 0; i < imageview20to28.length; i++) {
+            imageview20to28[i] = new ImageView();
+            imageview20to28[i].setImage(new Image("assets/Lazeryværdi.png", 100, 100, false, false));
+        }
+    }
+
+    public void nextxtonow() {
+        for (int i = 0; i < imageview10to18.length; i++) {
+            imageview10to18[i] = new ImageView();
+            imageview10to18[i].setImage(new Image("assets/Lazernext.png", 100, 100, false, false));
+        }
+    }
+
+    public void nextxtonowy() {
+        for (int i = 0; i < imageview30to38.length; i++) {
+            imageview30to38[i] = new ImageView();
+            imageview30to38[i].setImage(new Image("assets/Lazeryværdinext.png", 100, 100, false, false));
         }
     }
 
