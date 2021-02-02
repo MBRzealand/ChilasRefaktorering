@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import logic.Cat;
+
 import java.io.IOException;
 public class Controller  {
     int deathcounterint = 0;

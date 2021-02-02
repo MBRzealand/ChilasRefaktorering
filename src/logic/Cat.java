@@ -1,9 +1,11 @@
+package logic;
+
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 public class Cat {
-    int x ;
-    int y ;
+    public int x ;
+    public int y ;
     public ImageView getImageView() {
         return imageView;
     }
@@ -14,27 +16,27 @@ public class Cat {
          y = 2;
         imageView.setImage(new Image("assets/cat.png"));
     }
-    void plusx(){
+    public void plusx(){
         x++;
     }
-    void plusy(){
+    public void plusy(){
         y++;
     }
-    void minusx(){
+    public void minusx(){
         x--;
     }
 
-    void minusy(){
+    public void minusy(){
         y--;
     }
-    Boolean deadornot(int lx , int yl){
+    public Boolean deadornot(int lx , int yl){
         if (x == lx | y == yl ){
             System.out.println("you died");
             return true;
         }
         return false;
     }
-    void checkcoordiantes(){
+    public void checkcoordiantes(){
         if (x < 0){ x = 0; }
         if (y < 0){ y = 0; }
         if (x > 8){ x = 8; }
