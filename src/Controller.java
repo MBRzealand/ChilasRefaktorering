@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import logic.Cat;
+import logic.Lazers;
 
 import java.io.IOException;
 public class Controller  {
