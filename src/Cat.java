@@ -12,7 +12,7 @@ public class Cat {
     public Cat() {
          x = 2;
          y = 2;
-        imageView.setImage(new Image("Pictures/cat.png"));
+        imageView.setImage(new Image("assets/cat.png"));
     }
     void plusx(){
         x++;

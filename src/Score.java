@@ -33,13 +33,13 @@ public class Score {
         void newimage(){
             switch (plusscore) {
                 case 0:
-                    imageView.setImage(new Image("Pictures/bronze.png"));
+                    imageView.setImage(new Image("assets/bronze.png"));
                     break;
                 case 1:
-                    imageView.setImage(new Image("Pictures/silver.png"));
+                    imageView.setImage(new Image("assets/silver.png"));
                     break;
                 case 2:
-                    imageView.setImage(new Image("Pictures/gold.png"));
+                    imageView.setImage(new Image("assets/gold.png"));
                     break;
             }
         }
