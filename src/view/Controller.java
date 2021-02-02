@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -22,6 +24,8 @@ public class Controller  {
     Cat cat = new Cat();
     Lazers lazers = new Lazers();
     Score score = new Score();
+    private ImageView imageView = new ImageView();
+    public ImageView getImageView() { return imageView; }
     @FXML
     GridPane grid;
     @FXML
@@ -31,6 +35,7 @@ public class Controller  {
     @FXML
     void createbutton(){
         Button btn = new Button("ok");
+        newimage();
         btn.setOnKeyPressed( event ->{
             switch (event.getCode()){
                 case W:
@@ -95,7 +100,7 @@ void updategrid(){
     lazers.lazerynowtonext();
     //addcoins
     plusscore = score.getPlusscore() ;
-    grid.add(score.getImageView(), score.getX(), score.getY());
+    grid.add(getImageView(), score.getX(), score.getY());
 }
 @FXML
 void checkdeathandcoins(){
@@ -110,7 +115,8 @@ void checkdeathandcoins(){
     if (score.pickedornor(cat.x,cat.y)){
         scorecounter = scorecounter + plusscore;
         score.newrandomcoordinates();
-       scoreboard.setText("Your score is  " + scorecounter);
+        newimage();
+        scoreboard.setText("Your score is  " + scorecounter);
     }
 }
 @FXML
@@ -122,4 +128,19 @@ void resetgame(javafx.event.ActionEvent event)throws IOException {
         appStage.setScene(scene);
         appStage.show();
     }
+
+    void newimage(){
+        switch (plusscore) {
+            case 0:
+                imageView.setImage(new Image("assets/bronze.png"));
+                break;
+            case 1:
+                imageView.setImage(new Image("assets/silver.png"));
+                break;
+            case 2:
+                imageView.setImage(new Image("assets/gold.png"));
+                break;
+        }
+    }
+
 }
