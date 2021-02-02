@@ -126,7 +126,7 @@ void checkdeathandcoins(){
 @FXML
 void resetgame(javafx.event.ActionEvent event)throws IOException {
         //not correct way to reset game, but it works for now
-        Parent blah = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent blah = FXMLLoader.load(getClass().getResource("../sample.fxml"));
         Scene scene = new Scene(blah);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
