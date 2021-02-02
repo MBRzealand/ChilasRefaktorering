@@ -40,6 +40,13 @@ public class Controller  {
         nextxtonow();
         nextxtonowy();
         newimage();
+        score.addScoreObserver(new Score.ScoreObserver() {
+            //Anonymous inner class for handling updates from Score
+            @Override
+            public void update() {
+                newimage();
+            }
+        });
         btn.setOnKeyPressed( event ->{
             switch (event.getCode()){
                 case W:
@@ -119,7 +126,7 @@ void checkdeathandcoins(){
     if (score.pickedornor(cat.x,cat.y)){
         scorecounter = scorecounter + plusscore;
         score.newrandomcoordinates();
-        newimage();
+        //newimage(); //kaldes via Observer i stedet for
         scoreboard.setText("Your score is  " + scorecounter);
     }
 }
@@ -196,5 +203,4 @@ void resetgame(javafx.event.ActionEvent event)throws IOException {
             imageview30to38[i].setImage(new Image("assets/Lazeryværdinext.png", 100, 100, false, false));
         }
     }
-
 }

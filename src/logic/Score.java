@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.Random;
 public class Score {
    private int x;
@@ -12,6 +13,8 @@ public class Score {
         x =  random.nextInt(9);
         y =  random.nextInt(9);
         plusscore = random.nextInt(3);
+
+        notifyObservers();
     }
     public int getX() {
         return x;
@@ -26,5 +29,26 @@ public class Score {
             return true;
         }
         return false;
+    }
+
+    private ArrayList<ScoreObserver> observers = new ArrayList<ScoreObserver>();
+
+    private void notifyObservers() {
+        for (ScoreObserver observer : observers) {
+            observer.update();
+        }
+    }
+
+    public void addScoreObserver(ScoreObserver observer) {
+        if (!observers.contains(observer))
+            observers.add(observer);
+    }
+
+    public void removeScoreObserver(ScoreObserver observer) {
+        observers.remove(observer);
+    }
+
+    public interface ScoreObserver {
+        public void update();
     }
 }
