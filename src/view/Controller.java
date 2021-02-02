@@ -63,7 +63,7 @@ public class Controller  {
 @FXML
     void runmetods(){
         checkdeathandcoins();
-        cat.checkcoordiantes();
+        cat.checkCoordinates();
         updategrid(); }
 @FXML
 void updategrid(){
