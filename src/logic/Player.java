@@ -5,20 +5,38 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Player {
-    public int x ;
-    public int y ;
+    private int x ;
+    private int y ;
+    private ImageView playerImageView;
 
-    public ImageView getImageView() {
-        return imageView;
-    }    // GUI does not belong in logic classes
+    public int getX() {
+        return x;
+    }
 
-    @FXML
-    ImageView imageView = new ImageView();
+    public void setX(int x) {
+        this.x = x;
+    }
 
-    public Player() {
-         x = 2;
-         y = 2;
-        imageView.setImage(new Image("assets/cat.png"));
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public ImageView getPlayerImage() {
+        return playerImageView;
+    }
+
+    public void setPlayerImage(ImageView playerImage) {
+        this.playerImageView = playerImage;
+    }
+
+    public Player(int x, int y){
+        this.x = x;
+        this.y = y;
+        this.playerImageView = new ImageView("assets/cat.png");
     }
 
     public void moveRight(){

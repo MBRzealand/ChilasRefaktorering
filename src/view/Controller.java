@@ -22,12 +22,20 @@ public class Controller  {
     int scoreCounter = 0;
     int plusScore = 0;
 
-    Player player = new Player();
+    Player player = new Player(2,2);
     Lazers lazers = new Lazers();
     Score score = new Score();
 
     private ImageView imageView = new ImageView();
     public ImageView getImageView() { return imageView; }
+
+    public ImageView getPlayerImageView() {
+        return playerImageView;
+    }    // GUI does not belong in logic classes
+
+
+    @FXML
+    ImageView playerImageView = new ImageView();
 
     @FXML
     GridPane grid;
@@ -92,7 +100,7 @@ public class Controller  {
     @FXML
     void updategrid(){
         grid.getChildren().clear();
-        grid.add(player.getImageView() , player.x, player.y);
+        grid.add(player.getPlayerImage(), player.getX(), player.getY());
         //lazerpick
        lazers.generateRandomLazerX();
        lazers.generateRandomLazerY();
@@ -131,7 +139,7 @@ public class Controller  {
                 scoreboard.setText("Your score is  " + scoreCounter);
             }
         }
-        if (score.isOnTopOfIdea(player.x, player.y)){
+        if (score.isOnTopOfIdea(player.getX(), player.getY())){
             scoreCounter = scoreCounter + plusScore;
             score.generateIdea();
             //newimage(); //kaldes via Observer i stedet for

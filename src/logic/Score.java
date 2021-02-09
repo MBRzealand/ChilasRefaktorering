@@ -21,11 +21,11 @@ public class Score {
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
-    public Boolean isOnTopOfIdea(int ideaPositionX, int ideaPositionY){
+
+    public boolean isOnTopOfIdea(int ideaPositionX, int ideaPositionY){
         if (x == ideaPositionX & y == ideaPositionY ){
             return true;
         }
@@ -42,11 +42,11 @@ public class Score {
         if (!collectionOfScoreObservers.contains(observer))
             collectionOfScoreObservers.add(observer);
     }
-
+/*
     public void removeScoreObserver(ScoreObserver observer) {
         collectionOfScoreObservers.remove(observer);
     }
-
+*/
     public interface ScoreObserver {
         void update();
     }
