@@ -18,12 +18,14 @@ import logic.Score;
 
 import java.io.IOException;
 public class Controller  {
-    int deathcounterint = 0;
-    int scorecounter = 0;
-    int plusscore= 0;
+    int deathCounterInt = 0;
+    int scoreCounter = 0;
+    int plusScore = 0;
+
     Player player = new Player();
     Lazers lazers = new Lazers();
     Score score = new Score();
+
     private ImageView imageView = new ImageView();
     public ImageView getImageView() { return imageView; }
     @FXML
@@ -80,7 +82,8 @@ public class Controller  {
     void runmetods(){
         checkdeathandcoins();
         player.checkCoordinates();
-        updategrid(); }
+        updategrid();
+    }
 @FXML
 void updategrid(){
     grid.getChildren().clear();
@@ -110,24 +113,24 @@ void updategrid(){
     }
     lazers.setNewCurrentLazerY();
     //addcoins
-    plusscore = score.getPlusscore() ;
+    plusScore = score.getPlusScore() ;
     grid.add(getImageView(), score.getX(), score.getY());
 }
 @FXML
 void checkdeathandcoins(){
     if (player.isAlive(lazers.getLazerXCurrent(),lazers.getLazerYCurrent())){
-        deathcounterint++;
-        deathcounter.setText("Times died " + deathcounterint);
-        if(deathcounterint % 3 == 0){
-            scorecounter = 0;
-            scoreboard.setText("Your score is  " + scorecounter);
+        deathCounterInt++;
+        deathcounter.setText("Times died " + deathCounterInt);
+        if(deathCounterInt % 3 == 0){
+            scoreCounter = 0;
+            scoreboard.setText("Your score is  " + scoreCounter);
         }
     }
     if (score.isOnTopOfIdea(player.x, player.y)){
-        scorecounter = scorecounter + plusscore;
+        scoreCounter = scoreCounter + plusScore;
         score.generateIdea();
         //newimage(); //kaldes via Observer i stedet for
-        scoreboard.setText("Your score is  " + scorecounter);
+        scoreboard.setText("Your score is  " + scoreCounter);
     }
 }
 @FXML
@@ -141,7 +144,7 @@ void resetgame(javafx.event.ActionEvent event)throws IOException {
     }
 
     void newimage(){
-        switch (plusscore) {
+        switch (plusScore) {
             case 0:
                 imageView.setImage(new Image("assets/bronze.png"));
                 break;

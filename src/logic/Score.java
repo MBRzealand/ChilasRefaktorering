@@ -7,16 +7,14 @@ public class Score {
     private int x;
     private  int y;
     private Random random = new Random();
-    private int plusscore;
-    public int getPlusscore() { return plusscore+1; }
-    
-    
+    private int plusScore;
+    public int getPlusScore() { return plusScore +1; }
     
     public Score() { generateIdea(); }
     public void generateIdea(){
         x =  random.nextInt(9);
         y =  random.nextInt(9);
-        plusscore = random.nextInt(3);
+        plusScore = random.nextInt(3);
 
         notifyObservers();
     }
@@ -33,8 +31,6 @@ public class Score {
         }
         return false;
     }
-
-
 
     private void notifyObservers() {
         for (ScoreObserver observer : collectionOfScoreObservers) {
