@@ -41,7 +41,7 @@ public class Player {
         y--;
     }
 
-    public boolean isAlive(int lx , int yl){
+    public boolean isDead(int lx , int yl){
         return x == lx | y == yl;
     }
 
