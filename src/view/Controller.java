@@ -39,8 +39,10 @@ public class Controller  {
     Label left,right,up,down, deathCounter,scoreboard;
 
     @FXML
+    Button startButton;
+
+    @FXML
     void createbutton(){
-        Button btn = new Button("ok");
         xxpictures();
         ypictures();
         nextxtonow();
@@ -54,7 +56,7 @@ public class Controller  {
             }
         });
 
-        btn.setOnKeyPressed( event ->{
+        startButton.setOnKeyPressed( event ->{
             switch (event.getCode()) {
                 case W -> {
                     up.setOpacity(1);
@@ -74,14 +76,14 @@ public class Controller  {
                 }
             }
         });
-        btn.setOnKeyReleased( event ->{
+        startButton.setOnKeyReleased( event ->{
                     right.setOpacity(0.25);
                     up.setOpacity(0.25);
                     down.setOpacity(0.25);
                     left.setOpacity(0.25);
             runmetods();
                 });
-        pane.getChildren().add(btn);
+        pane.getChildren().add(startButton);
     }
 
     @FXML
