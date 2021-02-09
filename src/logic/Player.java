@@ -1,42 +1,28 @@
 package logic;
 
-import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Player {
     private int x ;
     private int y ;
-    private ImageView playerImageView;
+    private final ImageView PLAYERIMAGEVIEW;
 
     public int getX() {
         return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
     }
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public ImageView getPlayerImage() {
-        return playerImageView;
-    }
-
-    public void setPlayerImage(ImageView playerImage) {
-        this.playerImageView = playerImage;
+        return PLAYERIMAGEVIEW;
     }
 
     public Player(int x, int y){
         this.x = x;
         this.y = y;
-        this.playerImageView = new ImageView("assets/cat.png");
+        this.PLAYERIMAGEVIEW = new ImageView("assets/cat.png");
     }
 
     public void moveRight(){
@@ -55,12 +41,8 @@ public class Player {
         y--;
     }
 
-
     public boolean isAlive(int lx , int yl){
-        if (x == lx | y == yl ){
-            return true;
-        }
-        return false;
+        return x == lx | y == yl;
     }
 
     public void checkCoordinates(){

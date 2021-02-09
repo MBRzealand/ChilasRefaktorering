@@ -45,33 +45,34 @@ public class Controller  {
         ypictures();
         nextxtonow();
         nextxtonowy();
-        newimage();
+        newImage();
+
         score.addScoreObserver(new Score.ScoreObserver() {
-            //Anonymous inner class for handling updates from Score
             @Override
             public void update() {
-                newimage();
+                newImage();
             }
         });
+
         btn.setOnKeyPressed( event ->{
-            switch (event.getCode()){
-                case W:
+            switch (event.getCode()) {
+                case W -> {
                     up.setOpacity(1);
                     player.moveDown();
-                    break;
-                case S:
+                }
+                case S -> {
                     down.setOpacity(1);
                     player.moveUp();
-                    break;
-                case A:
+                }
+                case A -> {
                     left.setOpacity(1);
                     player.moveLeft();
-                    break;
-                case D:
+                }
+                case D -> {
                     right.setOpacity(1);
                     player.moveRight();
-                    break;
                 }
+            }
         });
         btn.setOnKeyReleased( event ->{
                     right.setOpacity(0.25);
@@ -148,25 +149,19 @@ public class Controller  {
         appStage.show();
     }
 
-    void newimage(){
+    void newImage(){
         switch (plusScore) {
-            case 0:
-                IMAGEVIEW.setImage(new Image("assets/bronze.png"));
-                break;
-            case 1:
-                IMAGEVIEW.setImage(new Image("assets/silver.png"));
-                break;
-            case 2:
-                IMAGEVIEW.setImage(new Image("assets/gold.png"));
-                break;
+            case 0 -> IMAGEVIEW.setImage(new Image("assets/bronze.png"));
+            case 1 -> IMAGEVIEW.setImage(new Image("assets/silver.png"));
+            case 2 -> IMAGEVIEW.setImage(new Image("assets/gold.png"));
         }
     }
+
     @FXML
     ImageView[] imageview1to8 = new ImageView[9];
     ImageView[] imageview10to18 = new ImageView[9];
     ImageView[] imageview20to28 = new ImageView[9];
     ImageView[] imageview30to38 = new ImageView[9];
-
 
     public ImageView[] getImageview1to8() {
         return imageview1to8;
