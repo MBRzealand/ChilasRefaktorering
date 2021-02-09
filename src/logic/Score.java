@@ -10,7 +10,7 @@ public class Score {
     private int plusScore;
     public int getPlusScore() { return plusScore +1; }
     
-    public Score() { generateIdea(); }
+    public Score() { generateIdea(); } //
     public void generateIdea(){
         x =  random.nextInt(9);
         y =  random.nextInt(9);
