@@ -26,16 +26,8 @@ public class Controller  {
     Lazers lazers = new Lazers();
     Score score = new Score();
 
-    private ImageView imageView = new ImageView();
-    public ImageView getImageView() { return imageView; }
-
-    public ImageView getPlayerImageView() {
-        return playerImageView;
-    }    // GUI does not belong in logic classes
-
-
-    @FXML
-    ImageView playerImageView = new ImageView();
+    private final ImageView IMAGEVIEW = new ImageView();
+    public ImageView getIMAGEVIEW() { return IMAGEVIEW; }
 
     @FXML
     GridPane grid;
@@ -127,7 +119,7 @@ public class Controller  {
         lazers.setNewCurrentLazerY();
         //addcoins
         plusScore = score.getPlusScore() ;
-        grid.add(getImageView(), score.getX(), score.getY());
+        grid.add(getIMAGEVIEW(), score.getX(), score.getY());
     }
     @FXML
     void checkdeathandcoins(){
@@ -159,13 +151,13 @@ public class Controller  {
     void newimage(){
         switch (plusScore) {
             case 0:
-                imageView.setImage(new Image("assets/bronze.png"));
+                IMAGEVIEW.setImage(new Image("assets/bronze.png"));
                 break;
             case 1:
-                imageView.setImage(new Image("assets/silver.png"));
+                IMAGEVIEW.setImage(new Image("assets/silver.png"));
                 break;
             case 2:
-                imageView.setImage(new Image("assets/gold.png"));
+                IMAGEVIEW.setImage(new Image("assets/gold.png"));
                 break;
         }
     }
