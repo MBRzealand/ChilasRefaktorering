@@ -4,40 +4,41 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Cat {
+public class Player {
     public int x ;
     public int y ;
 
     public ImageView getImageView() {
         return imageView;
-    }
+    }    // GUI does not belong in logic classes
 
     @FXML
     ImageView imageView = new ImageView();
 
-    public Cat() {
+    public Player() {
          x = 2;
          y = 2;
         imageView.setImage(new Image("assets/cat.png"));
     }
 
-    public void plusx(){
+    public void moveRight(){
         x++;
     }
 
-    public void plusy(){
+    public void moveUp(){
         y++;
     }
 
-    public void minusx(){
+    public void moveLeft(){
         x--;
     }
 
-    public void minusy(){
+    public void moveDown(){
         y--;
     }
 
-    public Boolean deadornot(int lx , int yl){
+
+    public Boolean isAlive(int lx , int yl){
         if (x == lx | y == yl ){
             System.out.println("you died");
             return true;

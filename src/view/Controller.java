@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import logic.Cat;
+import logic.Player;
 import logic.Lazers;
 import logic.Score;
 
@@ -21,7 +21,7 @@ public class Controller  {
     int deathcounterint = 0;
     int scorecounter = 0;
     int plusscore= 0;
-    Cat cat = new Cat();
+    Player player = new Player();
     Lazers lazers = new Lazers();
     Score score = new Score();
     private ImageView imageView = new ImageView();
@@ -51,19 +51,19 @@ public class Controller  {
             switch (event.getCode()){
                 case W:
                     up.setOpacity(1);
-                    cat.minusy();
+                    player.moveDown();
                     break;
                 case S:
                     down.setOpacity(1);
-                    cat.plusy();
+                    player.moveUp();
                     break;
                 case A:
                     left.setOpacity(1);
-                    cat.minusx();
+                    player.moveLeft();
                     break;
                 case D:
                     right.setOpacity(1);
-                    cat.plusx();
+                    player.moveRight();
                     break;
                 }
         });
@@ -79,43 +79,43 @@ public class Controller  {
 @FXML
     void runmetods(){
         checkdeathandcoins();
-        cat.checkCoordinates();
+        player.checkCoordinates();
         updategrid(); }
 @FXML
 void updategrid(){
     grid.getChildren().clear();
-    grid.add(cat.getImageView() ,cat.x,cat.y);
+    grid.add(player.getImageView() , player.x, player.y);
     //lazerpick
-   lazers.newrandomx();
-   lazers.newrandomy();
+   lazers.generateRandomLazerX();
+   lazers.generateRandomLazerY();
     //xxpictures
     for (int i = 0; i <9 ; i++) {
-       grid.add(getImageview1to8()[i],lazers.getLazerxnow(),i);
+       grid.add(getImageview1to8()[i],lazers.getLazerXCurrent(),i);
     }
     //ypictures
     for (int i = 0; i <9 ; i++) {
-        if (i != lazers.getLazerxnow() ){
-            grid.add(getImageview20to28()[i],i,lazers.getLazerynow());
+        if (i != lazers.getLazerXCurrent() ){
+            grid.add(getImageview20to28()[i],i,lazers.getLazerYCurrent());
         }
     }
     //nextxtonow
     for (int i = 0; i <9 ; i++) {
-            grid.add(getImageview10to18()[i], lazers.getLazerxnext(),i);
+            grid.add(getImageview10to18()[i], lazers.getLazerXNext(),i);
     }
-    lazers.lazerxnowtonext();
+    lazers.setNewCurrentLazerX();
     for (int i = 0; i <9 ; i++) {
-        if (i != lazers.getLazerxnext() ){
-            grid.add(getImageview30to38()[i], i,lazers.getLazerynext());
+        if (i != lazers.getLazerXNext() ){
+            grid.add(getImageview30to38()[i], i,lazers.getLazerYNext());
         }
     }
-    lazers.lazerynowtonext();
+    lazers.setNewCurrentLazerY();
     //addcoins
     plusscore = score.getPlusscore() ;
     grid.add(getImageView(), score.getX(), score.getY());
 }
 @FXML
 void checkdeathandcoins(){
-    if (cat.deadornot(lazers.getLazerxnow(),lazers.getLazerynow())){
+    if (player.isAlive(lazers.getLazerXCurrent(),lazers.getLazerYCurrent())){
         deathcounterint++;
         deathcounter.setText("Times died " + deathcounterint);
         if(deathcounterint % 3 == 0){
@@ -123,9 +123,9 @@ void checkdeathandcoins(){
             scoreboard.setText("Your score is  " + scorecounter);
         }
     }
-    if (score.pickedornor(cat.x,cat.y)){
+    if (score.isOnTopOfIdea(player.x, player.y)){
         scorecounter = scorecounter + plusscore;
-        score.newrandomcoordinates();
+        score.generateIdea();
         //newimage(); //kaldes via Observer i stedet for
         scoreboard.setText("Your score is  " + scorecounter);
     }

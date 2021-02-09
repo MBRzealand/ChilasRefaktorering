@@ -2,49 +2,49 @@ package logic;
 import java.util.Random;
 
 public class Lazers {
-    int lazerxnext = 0;
-    int lazerxnow = 0;
-    int lazerynow = 0;
-    int lazerynext = 0;
-    Random random = new Random();
-
+    //Variables
+    int lazerXNext = 0;
+    int lazerXCurrent = 0;
+    int lazerYCurrent = 0;
+    int lazerYNext = 0;
+    Random lazerPosition = new Random();
 
     public Lazers() {
-
     }
 
-    public int getLazerxnext() {
-        return lazerxnext;
+    //Getting lazer posistion
+    public int getLazerXNext() {
+        return lazerXNext;
     }
 
-    public int getLazerxnow() {
-        return lazerxnow;
+    public int getLazerXCurrent() {
+        return lazerXCurrent;
     }
 
-    public int getLazerynow() {
-        return lazerynow;
+    public int getLazerYCurrent() {
+        return lazerYCurrent;
     }
 
-    public int getLazerynext() {
-        return lazerynext;
+    public int getLazerYNext() {
+        return lazerYNext;
     }
 
+    //Setting lazer position
+    public void generateRandomLazerX() {
 
-    public void newrandomx() {
-        //lazerpick
-        lazerxnext = random.nextInt(9);
+        lazerXNext = lazerPosition.nextInt(9);
     }
 
-    public void newrandomy() {
-        lazerynext = random.nextInt(9);
+    public void generateRandomLazerY() {
+        lazerYNext = lazerPosition.nextInt(9);
     }
 
-    public void lazerxnowtonext() {
-        lazerxnow = lazerxnext;
+    public void setNewCurrentLazerX() {
+        lazerXCurrent = lazerXNext;
     }
 
-    public void lazerynowtonext() {
-        lazerynow = lazerynext;
+    public void setNewCurrentLazerY() {
+        lazerYCurrent = lazerYNext;
     }
 
 }
