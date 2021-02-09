@@ -43,11 +43,9 @@ public class Score {
             collectionOfScoreObservers.add(observer);
     }
 
-
-//    public void removeScoreObserver(ScoreObserver observer) {
-//        collectionOfScoreObservers.remove(observer);
-//    }
-
+    public void removeScoreObserver(ScoreObserver observer) {
+        collectionOfScoreObservers.remove(observer);
+    }
 
     public interface ScoreObserver {
         void update();

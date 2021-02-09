@@ -28,12 +28,16 @@ public class Controller  {
 
     private ImageView imageView = new ImageView();
     public ImageView getImageView() { return imageView; }
+
     @FXML
     GridPane grid;
+
     @FXML
     AnchorPane pane = new AnchorPane();
+
     @FXML
-    Label left,right,up,down,deathcounter,scoreboard;
+    Label left,right,up,down, deathCounter,scoreboard;
+
     @FXML
     void createbutton(){
         Button btn = new Button("ok");
@@ -78,63 +82,64 @@ public class Controller  {
                 });
         pane.getChildren().add(btn);
     }
-@FXML
+
+    @FXML
     void runmetods(){
         checkdeathandcoins();
         player.checkCoordinates();
         updategrid();
     }
-@FXML
-void updategrid(){
-    grid.getChildren().clear();
-    grid.add(player.getImageView() , player.x, player.y);
-    //lazerpick
-   lazers.generateRandomLazerX();
-   lazers.generateRandomLazerY();
-    //xxpictures
-    for (int i = 0; i <9 ; i++) {
-       grid.add(getImageview1to8()[i],lazers.getLazerXCurrent(),i);
-    }
-    //ypictures
-    for (int i = 0; i <9 ; i++) {
-        if (i != lazers.getLazerXCurrent() ){
-            grid.add(getImageview20to28()[i],i,lazers.getLazerYCurrent());
+    @FXML
+    void updategrid(){
+        grid.getChildren().clear();
+        grid.add(player.getImageView() , player.x, player.y);
+        //lazerpick
+       lazers.generateRandomLazerX();
+       lazers.generateRandomLazerY();
+        //xxpictures
+        for (int i = 0; i <9 ; i++) {
+           grid.add(getImageview1to8()[i],lazers.getLazerXCurrent(),i);
         }
-    }
-    //nextxtonow
-    for (int i = 0; i <9 ; i++) {
-            grid.add(getImageview10to18()[i], lazers.getLazerXNext(),i);
-    }
-    lazers.setNewCurrentLazerX();
-    for (int i = 0; i <9 ; i++) {
-        if (i != lazers.getLazerXNext() ){
-            grid.add(getImageview30to38()[i], i,lazers.getLazerYNext());
+        //ypictures
+        for (int i = 0; i <9 ; i++) {
+            if (i != lazers.getLazerXCurrent() ){
+                grid.add(getImageview20to28()[i],i,lazers.getLazerYCurrent());
+            }
         }
+        //nextxtonow
+        for (int i = 0; i <9 ; i++) {
+                grid.add(getImageview10to18()[i], lazers.getLazerXNext(),i);
+        }
+        lazers.setNewCurrentLazerX();
+        for (int i = 0; i <9 ; i++) {
+            if (i != lazers.getLazerXNext() ){
+                grid.add(getImageview30to38()[i], i,lazers.getLazerYNext());
+            }
+        }
+        lazers.setNewCurrentLazerY();
+        //addcoins
+        plusScore = score.getPlusScore() ;
+        grid.add(getImageView(), score.getX(), score.getY());
     }
-    lazers.setNewCurrentLazerY();
-    //addcoins
-    plusScore = score.getPlusScore() ;
-    grid.add(getImageView(), score.getX(), score.getY());
-}
-@FXML
-void checkdeathandcoins(){
-    if (player.isAlive(lazers.getLazerXCurrent(),lazers.getLazerYCurrent())){
-        deathCounterInt++;
-        deathcounter.setText("Times died " + deathCounterInt);
-        if(deathCounterInt % 3 == 0){
-            scoreCounter = 0;
+    @FXML
+    void checkdeathandcoins(){
+        if (player.isAlive(lazers.getLazerXCurrent(),lazers.getLazerYCurrent())){
+            deathCounterInt++;
+            deathCounter.setText("Times died " + deathCounterInt);
+            if(deathCounterInt % 3 == 0){
+                scoreCounter = 0;
+                scoreboard.setText("Your score is  " + scoreCounter);
+            }
+        }
+        if (score.isOnTopOfIdea(player.x, player.y)){
+            scoreCounter = scoreCounter + plusScore;
+            score.generateIdea();
+            //newimage(); //kaldes via Observer i stedet for
             scoreboard.setText("Your score is  " + scoreCounter);
         }
     }
-    if (score.isOnTopOfIdea(player.x, player.y)){
-        scoreCounter = scoreCounter + plusScore;
-        score.generateIdea();
-        //newimage(); //kaldes via Observer i stedet for
-        scoreboard.setText("Your score is  " + scoreCounter);
-    }
-}
-@FXML
-void resetgame(javafx.event.ActionEvent event)throws IOException {
+    @FXML
+    void resetgame(javafx.event.ActionEvent event)throws IOException {
         //not correct way to reset game, but it works for now
         Parent blah = FXMLLoader.load(getClass().getResource("../sample.fxml"));
         Scene scene = new Scene(blah);

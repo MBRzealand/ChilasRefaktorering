@@ -38,9 +38,8 @@ public class Player {
     }
 
 
-    public Boolean isAlive(int lx , int yl){
+    public boolean isAlive(int lx , int yl){
         if (x == lx | y == yl ){
-            System.out.println("you died");
             return true;
         }
         return false;
