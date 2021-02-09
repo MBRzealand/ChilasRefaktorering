@@ -37,7 +37,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label fx:id="deathcounter" layoutX="1098.0" layoutY="396.0">
+      <Label fx:id="deathCounter" layoutX="1098.0" layoutY="396.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>
