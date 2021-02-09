@@ -42,7 +42,7 @@ public class Controller  {
     Button startButton;
 
     @FXML
-    void createbutton(){
+    void createButton(){
         xxpictures();
         ypictures();
         nextxtonow();
